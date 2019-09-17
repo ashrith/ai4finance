@@ -42,12 +42,12 @@
 
 %\author{\copyright\hspace{1pt}Ashrith Barthur\footnote{\tiny{This material is shared under a \href{https://creativecommons.org/licenses/by/4.0/deed.ast}{CC By 4.0 license} which allows for editing and redistribution, even for commercial purposes. However, any derivative work should attribute the author and H2O.AI.}}}
 \author{Ashrith Barthur}
-\title{Detecting Money Laundering with AI}
+\title{Detecting Money Laundering FP with AI}
 \subtitle{Building Machine Learning Recipes to Detect Malicious Behaviours}
 \logo{\includegraphics[height=8pt]{img/h2o_logo.png}}
 \institute{\href{https://www.h2o.ai}{H\textsubscript{2}O.ai}}
 \date{\today}
-\subject{Detecting Money Laundering with AI}
+\subject{Detecting Money Laundering FP with AI}
 
 \begin{document}
 	
@@ -69,6 +69,7 @@
 		\begin{enumerate}
 			\item Audience
 			\item Our Customers
+			\item AI4 Team
 			\item H2O Team
 			\item Patrick Hall - Thanks for the beamer template.
 		\end{enumerate}
@@ -84,7 +85,7 @@
 			\item Researcher in the area of anomalies specific to malicious behaviour, graduated with a PhD from Purdue. 
 			\item Areas -  Cybersecurity, Electronic Fraud, Money Laundering, and Global Malicious Migratory Patterns.
 			\item When I am not working, I am usually biking, or taking pictures. 
-			\item @ashrith (github) @cyberbaggage (twitter)
+			\item @ashrith (github) @cyberbaggage (twitter) @ba(h2o.ai)
 		\end{enumerate}
 	\end{frame}
 
@@ -181,15 +182,15 @@
 %-------------------------------------------------------------------------------
 	\begin{frame}
 		\frametitle{Anti Money Laundering}
-		How are we solving Anti Money Laundering right now? \\
+		How are we solving Anti Money Laundering up until now?\\
 		\begin{enumerate}
 			\item We use Rule-Based systems that detect instances of money laundering.
 		\end{enumerate}
 
-		Then, what remains to be a problem?\\
+		Then what remains to be a problem?\\
 		\begin{enumerate}
 			\item The Rule-Based systems are slow to evolve. 
-			\item Rule gaps exist. 
+			\item Rule gaps, and complexities exist. 
 			\item The have a high false positive rate - 75\% to 99\%
 		\end{enumerate}
 	\end{frame}
@@ -232,7 +233,7 @@
 		Driverless AI provides an extension. \\
 		This is a class `CustomTransformer`
 		\begin{verbatim}
-		class ExampleLogTransformer(CustomerTransformer):
+		class ExampleLogTransformer(CustomTransformer):
 		\end{verbatim}
 \end{frame}
 %-------------------------------------------------------------------------------
@@ -244,7 +245,7 @@
 		\begin{enumerate}
 			\item Parameters that need to be provided. 
 			\item These parameters are specific to the type of feature recipe that you are building. 
-			\item It also has four methods which primary handle your feature or transformation. 
+			\item It also has four methods which primary handle your feature engineering transformation. 
 		\end{enumerate}
 			
 \end{frame}
@@ -254,7 +255,7 @@
 	\begin{frame}[fragile]
 		\frametitle{Parameters - Basic}
 		\begin{verbatim}
-		class ExampleLogTransformer(CustomerTransformer):
+		class ExampleLogTransformer(CustomTransformer):
 			_regression = True
 			_binary = True
 			_multiclass = True
@@ -267,7 +268,7 @@
 	\begin{frame}[fragile]
 		\frametitle{Parameters - Advanced}
 		\begin{verbatim}
-		class ExampleLogTransformer(CustomerTransformer):
+		class ExampleLogTransformer(CustomTransformer):
 			_regression = True
 			_binary = True
 			_multiclass = True
@@ -284,7 +285,7 @@
 	\begin{frame}[fragile]
 		\frametitle{Acceptance Method}
 		\begin{verbatim}
-		class ExampleLogTransformer(CustomerTransformer):
+		class ExampleLogTransformer(CustomTransformer):
 		_regression = True
 		_binary = True
 		_multiclass = True
@@ -397,6 +398,23 @@
 		\frametitle{DEMO}
 	\end{frame}
 
+%-------------------------------------------------------------------------------
+%		\subsection{Question}
+%-------------------------------------------------------------------------------
+	\begin{frame}
+		\frametitle{Advantages}
+		\begin{enumerate}
+			\item Feature engineering process standardised by:
+				\begin{enumerate}
+					\item preset parameters
+					\item preset methods
+				\end{enumerate}
+			\item Effort minimisation leads to minimisation in time spent.
+			\item Build only once - Feature engineering is carried over from training/testing to production.
+			\item DAI automatically, runs multiple models on various sets of features to get the best model. 
+			\item All the requirements are handled internally by DAI. 
+		\end{enumerate}
+\end{frame}
 %-------------------------------------------------------------------------------
 %	References
 %-------------------------------------------------------------------------------
